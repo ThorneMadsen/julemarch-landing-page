@@ -19,7 +19,7 @@ Additions (no new npm dependencies):
 - **CSS Modules** (`.module.css`) -- built into Vite, scoped per component
 - **Google Fonts** via `<link>` in `index.html`: Playfair Display (headings) + Inter (body)
 
-Do NOT add: routing, state management libraries, UI component libraries, animation libraries, TypeScript, or form libraries. Everything needed is built into React 19 + Vite 7.
+Do NOT add: routing, state management libraries, TypeScript, or form libraries.
 
 ## Design System
 
