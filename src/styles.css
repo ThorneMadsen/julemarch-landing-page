@@ -177,7 +177,7 @@
     @media (max-width: 760px) {
       .hero-foot { grid-template-columns: 1fr; gap: 18px; text-align: center; }
       .hero-foot-last { text-align: center; }
-      .btn-cta .arrow { display: none; }
+      .btn-cta .arrow, footer .arrow { display: none; }
     }
 
     /* ───────── Tinted hero (palette-fitting backgrounds) ───────── */

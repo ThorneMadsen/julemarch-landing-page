@@ -337,7 +337,7 @@ const FAQ_ITEMS = [
 
 
 function FAQ() {
-  const [open, setOpen] = useState(0);
+  const [open, setOpen] = useState(-1);
   return (
     <section id="faq">
       <div className="wrap">
@@ -442,7 +442,7 @@ function Foot() {
           <h5>Formålet</h5>
           <ul>
             <li><a href="#smilfonden">Om Smilfonden</a></li>
-            <li><a href="https://smilfonden.dk" target="_blank" rel="noopener noreferrer">smilfonden.dk ↗</a></li>
+            <li><a href="https://smilfonden.dk" target="_blank" rel="noopener noreferrer">smilfonden.dk <span className="arrow">↗</span></a></li>
             <li><a href="#sponsorer">Sponsorer</a></li>
           </ul>
         </div>
