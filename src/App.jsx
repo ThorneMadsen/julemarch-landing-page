@@ -113,7 +113,7 @@ function HeroFoot() {
         <div className="label">Mødested</div>
         <div className="val">Kuriosum<br /><span className="small">Helsingør · kl. 08:00</span></div>
       </div>
-      <div style={{ textAlign: "right" }}>
+      <div className="hero-foot-last">
         <div className="label">Rute</div>
         <div className="val">~ 50 km<br /><span className="small">til Rigshospitalet</span></div>
       </div>

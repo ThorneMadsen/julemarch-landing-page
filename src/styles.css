@@ -173,8 +173,11 @@
     .hero-foot .val { font-family: var(--serif); font-size: 24px; line-height: 1.15; font-style: normal; }
     .hero-foot .val .small { font-size: 14px; opacity: .65; font-family: var(--sans); }
 
+    .hero-foot-last { text-align: right; }
     @media (max-width: 760px) {
-      .hero-foot { grid-template-columns: 1fr; gap: 18px; }
+      .hero-foot { grid-template-columns: 1fr; gap: 18px; text-align: center; }
+      .hero-foot-last { text-align: center; }
+      .btn-cta .arrow { display: none; }
     }
 
     /* ───────── Tinted hero (palette-fitting backgrounds) ───────── */
