@@ -1,7 +1,7 @@
 # Julemarch '26 — Landing Site
 
 A single-page risograph-poster landing site for **Julemarch '26**, a Copenhagen
-Christmas charity march from Helsingør to Rigshospitalet, benefiting Smilfonden.
+Christmas charity march from Helsingør to København. 2026 fundraiser: Børnecancerfonden (2025: SMILfonden).
 All copy is in Danish.
 
 Built with **React 18 + Vite**.
