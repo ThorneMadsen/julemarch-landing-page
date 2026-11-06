@@ -7,7 +7,7 @@ import {
 
 const { useState, useEffect } = React;
 
-// app.jsx — Julemarch ’26 landing
+// app.jsx — Julemarch '26 landing
 // Single-page risograph-poster site for a Christmas march from Helsingør to
 // København. 2026 fundraiser: Børnecancerfonden. All copy in Danish.
 
@@ -57,7 +57,16 @@ const FUNDRAISING = {
   charity: "Børnecancerfonden",
 };
 
-const SMIL_STATEMENT = null; // { text: "...", who: "Navn, titel, SMILfonden" }
+const SMIL_STATEMENT = {
+  text: <>
+    <p>I SMILfonden lykkes vi kun med hjælp udefra. ⭐</p>
+    <p>8-årige Noél har netop samlet ind til fordel for de børn og unge, vi hjælper. Som en del af en julemarch gik han hele vejen fra Helsingør til Rigshospitalet, så vi kunne dele ud til børn, der må holde jul på hospital eller hospice og ikke kan være hjemme med deres familie.</p>
+    <p>50 kilometer i sin mors løbesko på ren vilje. 💪</p>
+    <p>Her på årets sidste dag vil vi sige tak til alle jer, der engagerer jer på vores vegne. Til ildsjælene, der tager initiativ, de frivillige, virksomheder og fonde, som gør vores arbejde muligt.</p>
+    <p>TAK</p>
+  </>,
+  who: "SMILfonden",
+};
 
 const TESTIMONIALS = []; // [{ quote: "...", who: "Navn" }]
 
@@ -209,14 +218,11 @@ function HeroFoot() {
       </div>
       <div>
         <div className="label">Start</div>
-        <div className="val">
-          {orPending(EVENT.startPlace, "startsted")}<br />
-          <span className="small">Helsingør · kl. {orPending(EVENT.startTime, "starttid")}</span>
-        </div>
+        <div className="val">Helsingør</div>
       </div>
-      <div className="hero-foot-last">
+      <div>
         <div className="label">Indsamling 2026</div>
-        <div className="val">Mål: {FUNDRAISING.goalAmount}<br /><span className="small">til {FUNDRAISING.charity}</span></div>
+        <div className="val">{FUNDRAISING.charity}</div>
       </div>
     </div>);
 
@@ -345,7 +351,7 @@ function Tilmelding() {
           background: "color-mix(in oklab, var(--paper) 50%, white 0%)",
           position: "relative"
         }}>
-          <div className="eyebrow">Tilmelding · Julemarch ’26</div>
+          <div className="eyebrow">Tilmelding · Julemarch '26</div>
           <h2 className="display" style={{ fontSize: "clamp(48px,8vw,110px)", margin: "12px 0 12px" }}>
             Gå med os.
           </h2>
@@ -378,21 +384,21 @@ function Udtalelse() {
     <section id="udtalelse" className="smil">
       <div className="wrap">
         <div>
+          <img
+            className="udtalelse-photo"
+            src={`/photos/${encodeURIComponent("Avisartikel.png")}`}
+            alt="Avisartikel om Noél" />
+        </div>
+
+        <div>
           <div className="eyebrow">Sidste år · 2025</div>
           <h2>
             {FUNDRAISING.lastYearAmount} til <span className="accent italic">{FUNDRAISING.lastYearCharity}</span>.
           </h2>
-          <img
-            className="udtalelse-photo"
-            src={`/photos/${encodeURIComponent("Afsløring af penge indsamlet.jpg")}`}
-            alt="Afsløring af penge indsamlet" />
-        </div>
-
-        <div>
-          <div className="eyebrow">Udtalelse fra SMILfonden</div>
+          <div className="eyebrow" style={{ marginTop: 40 }}>Udtalelse fra SMILfonden</div>
           <div className="quote">
             {SMIL_STATEMENT ?
-            <>“{SMIL_STATEMENT.text}”<span className="who">— {SMIL_STATEMENT.who}</span></> :
+            <>{SMIL_STATEMENT.text}<span className="who">— {SMIL_STATEMENT.who}</span></> :
             <Pending>udtalelse fra SMILfonden</Pending>}
           </div>
         </div>
@@ -405,7 +411,6 @@ function Udtalelse() {
 const GALLERY_PHOTOS = [
   { file: "Morgenmad og briefing.jpg", cls: "g-wide", tint: "t-green" },
   { file: "Der marcheres.jpg",         cls: "g-tall", tint: "t-red"   },
-  { file: "Avisartikel.png",           cls: "g-tall", tint: "t-slate", imgStyle: { objectPosition: "center 15%" } },
   { file: "Frugtpause.jpg",            cls: "g-wide", tint: "t-ochre" },
   { file: "Afsløring af penge indsamlet.jpg", cls: "g-half", tint: "t-ochre" },
   { file: "De gik alle 50 km.jpg",     cls: "g-half", tint: "t-red"   },
@@ -429,28 +434,6 @@ function Gallery() {
     </section>);
 }
 
-// ─────────── Section: Feedback fra deltagerne ───────────
-function Feedback() {
-  return (
-    <section id="feedback">
-      <div className="wrap">
-        <div className="eyebrow">Feedback fra deltagerne</div>
-        <h2 className="display" style={{ fontSize: "clamp(36px,5vw,56px)", margin: "10px 0 32px", fontStyle: "normal" }}>
-          Sådan var Julemarch 2025.
-        </h2>
-        {TESTIMONIALS.length ?
-        <div className="testimonial-grid">
-            {TESTIMONIALS.map((t, i) =>
-          <figure className="testimonial" key={i}>
-                <blockquote>“{t.quote}”</blockquote>
-                <figcaption>— {t.who}</figcaption>
-              </figure>
-          )}
-          </div> :
-        <Pending>feedback fra deltagerne</Pending>}
-      </div>
-    </section>);
-}
 
 // ─────────── Section: FAQ ───────────
 const FAQ_ITEMS = [
@@ -519,19 +502,14 @@ function Sponsors() {
         <p style={{ fontFamily: "var(--sans)", fontSize: 17, lineHeight: 1.6, maxWidth: 720, marginTop: 0, marginBottom: 48, color: "color-mix(in oklab, var(--ink) 75%, transparent)" }}>
           Julemarch 2025 blev muliggjort af lokale virksomheder, der støttede os. Tusind tak.
         </p>
-        {SPONSOR_GROUPS.map((g) =>
-        <div className="sponsor-group" key={g.label}>
-            <h3>{g.label}</h3>
-            <div className="sponsor-grid">
-              {g.sponsors.map((s) =>
-            <div className="sponsor" key={s.name}>
-                  <div className="name">{s.name}</div>
-                  <div className="role">{s.role}</div>
-                </div>
-            )}
-            </div>
+        <div className="sponsor-grid">
+          {SPONSOR_GROUPS.flatMap((g) => g.sponsors).map((s) =>
+          <div className="sponsor" key={s.name}>
+            <div className="name">{s.name}</div>
+            <div className="role">{s.role}</div>
           </div>
-        )}
+          )}
+        </div>
         <p style={{ marginTop: 36 }}>
           <a className="btn-ghost" href="#samarbejde">Vil din virksomhed være med i år?</a>
         </p>
@@ -610,7 +588,7 @@ function Foot() {
     <footer>
       <div className="wrap">
         <div>
-          <div className="mark">Julemarch ’26</div>
+          <img src="/photos/logo.png" alt="Julemarch" className="footer-logo" />
           <p style={{ fontFamily: "var(--sans)", fontSize: 13, lineHeight: 1.6, maxWidth: 280, marginTop: 14, color: "color-mix(in oklab, var(--ink) 70%, transparent)" }}>Et lille, frivilligt arrangement fra Helsingør til København. Til fordel for {FUNDRAISING.charity}.
           </p>
         </div>
@@ -703,7 +681,6 @@ function App() {
         <div className="reveal"><Tilmelding /></div>
         <div className="reveal"><Udtalelse /></div>
         <div className="reveal"><Gallery /></div>
-        <div className="reveal"><Feedback /></div>
         <div className="reveal"><Sponsors /></div>
         <div className="reveal"><Samarbejde /></div>
         <div className="reveal"><FAQ /></div>
